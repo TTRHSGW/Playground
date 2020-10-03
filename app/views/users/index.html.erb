@@ -13,6 +13,7 @@
       <tr>
         <td><%= user.username %></td>
         <td><%= link_to '見る', user %></td>
+        <td><%= link_to '編集', edit_user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>

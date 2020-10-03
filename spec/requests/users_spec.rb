@@ -26,4 +26,12 @@ RSpec.describe "Users", type: :request do
     end
   end
 
+  describe "PUT /users/:id" do
+    it "Userが更新されること" do
+      user = User.create(username: 'first_test_man', password: 'password', password_confirmation: 'password')
+      put user_path(user), params: { user: { username: 'testman', password: 'password', password_confirmation: 'password' }}
+      expect(response).to have_http_status(302)
+    end
+  end
+
 end
