@@ -26,6 +26,15 @@ RSpec.describe "Users", type: :request do
     end
   end
 
+  describe "GET /users/:id/edit" do
+    it "edit.htmlが読み込まれること" do
+      user = User.create(username: 'first_test_man', password: 'password', password_confirmation: 'password')
+      get edit_user_path(user)
+      expect(response).to have_http_status(200)
+      expect(response.body).to include('Users#edit')
+    end
+  end
+
   describe "PUT /users/:id" do
     it "Userが更新されること" do
       user = User.create(username: 'first_test_man', password: 'password', password_confirmation: 'password')
