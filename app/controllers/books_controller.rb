@@ -7,7 +7,16 @@ class BooksController < ApplicationController
   def new
   end
 
-  def edit
+  def edit; end
+
+  def create
+    book = Book.new(book_params)
+
+    if book.save
+      redirect_to book, notice: "登録しました"
+    else
+      render :new, notice: "登録できませんでした", status: 204
+    end
   end
 
   def show
