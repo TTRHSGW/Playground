@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit show update]
+  before_action :set_user, only: %i[edit show update destroy]
 
   def index
     @users = User.all
@@ -31,7 +31,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    if @user.destroy
+      redirect_to users_path, notice: '削除しました'
+    else
+      redirect_to users_path, notice: '削除できませんでした'
+    end
+  end
 
   private
 

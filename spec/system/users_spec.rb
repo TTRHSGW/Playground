@@ -23,10 +23,19 @@ RSpec.describe "Users", type: :system do
     user = User.create(username: "test_user", password: "password")
     visit edit_user_path(user)
     expect(page).to have_content "Users#edit"
+
     fill_in "Username", with: "change_name_user"
     fill_in "Password", with: "change_password"
     fill_in "Password confirmation", with: "change_password"
     click_button "Update User"
+
     expect(page).to have_content "change_name_user"
+  end
+
+  scenario "destroy user" do
+    user = User.create(username: "deleted_user", password: "password")
+    visit users_path
+    click_link "削除"
+    expect(page).to_not have_content "deleted_user"
   end
 end
