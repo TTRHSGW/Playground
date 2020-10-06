@@ -1,26 +1,25 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[edit show update]
 
-  def index
-  end
+  def index; end
 
-  def new
-  end
+  def new; end
 
   def edit; end
+
+  def update; end
 
   def create
     book = Book.new(book_params)
 
     if book.save
-      redirect_to book, notice: "登録しました"
+      redirect_to book, notice: '登録しました'
     else
-      render :new, notice: "登録できませんでした", status: 204
+      render :new, notice: '登録できませんでした', status: :no_content
     end
   end
 
-  def show
-  end
+  def show; end
 
   private
 
