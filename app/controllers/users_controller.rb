@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      redirect_to user, notice: '登録しました'
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to @user, notice: '登録しました'
     else
-      render :new, notice: '登録できませんでした'
+      render :new, status: 204
     end
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: '登録しました'
     else
-      render :edit, notice: '登録できませんでした'
+      render :edit, status: 204
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to users_path, notice: '削除しました'
     else
-      redirect_to users_path, notice: '削除できませんでした'
+      render users
     end
   end
 

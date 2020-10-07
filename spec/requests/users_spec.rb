@@ -18,12 +18,24 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'POST /users' do
-    it 'Userが登録されること' do
-      expect do
-        post users_path, params: { user: { username: 'testman', password: 'password', password_confirmation: 'password' } }
-      end.to change(User, :count).by(1)
-      expect(response).to have_http_status(302)
+    context 'Userが有効な状態の時' do
+      it 'Userが登録されること' do
+        expect do
+          post users_path, params: { user: { username: 'test_user', password: 'password', password_confirmation: 'password' } }
+        end.to change(User, :count).by(1)
+        expect(response).to have_http_status(302)
+      end
     end
+
+    context 'Userが無効な状態の時' do
+      it 'Userが登録されないこと' do
+        expect do
+          post users_path, params: { user: { username: nil, password: 'password', password_confirmation: 'password' } }
+        end.to change(User, :count).by(0)
+        expect(response).to have_http_status(204)
+      end
+    end
+
   end
 
   describe 'GET /users/:id/edit' do

@@ -5,12 +5,14 @@ RSpec.describe 'Books', type: :request do
     it 'index.htmlが読み込まれること' do
       get books_path
       expect(response).to have_http_status(200)
+      expect(response.body).to include('Books#index')
     end
   end
 
   describe 'GET /books/new' do
     it 'new.html.erbが読み込まれること' do
       get new_book_path
+      expect(response).to have_http_status(200)
       expect(response.body).to include('Books#new')
     end
   end
