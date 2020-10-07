@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: '登録しました'
     else
-      render :new, status: 204
+      render :new
     end
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: '登録しました'
     else
-      render :edit, status: 204
+      render :edit
     end
   end
 

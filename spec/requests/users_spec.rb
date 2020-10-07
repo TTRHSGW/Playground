@@ -32,7 +32,7 @@ RSpec.describe 'Users', type: :request do
         expect do
           post users_path, params: { user: { username: nil, password: 'password', password_confirmation: 'password' } }
         end.to change(User, :count).by(0)
-        expect(response).to have_http_status(204)
+        expect(response).to have_http_status(200)
       end
     end
 
