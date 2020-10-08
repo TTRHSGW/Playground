@@ -35,7 +35,6 @@ RSpec.describe 'Users', type: :request do
         expect(response).to have_http_status(200)
       end
     end
-
   end
 
   describe 'GET /users/:id/edit' do

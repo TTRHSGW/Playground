@@ -16,7 +16,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to @book, notice: '登録しました'
     else
-      render :new, status: 204
+      flash.now[:danger] = '登録できませんでした'
+      render :new
     end
   end
 

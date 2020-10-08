@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: '登録しました'
     else
+      flash.now[:danger] = '登録できませんでした'
       render :new
     end
   end
