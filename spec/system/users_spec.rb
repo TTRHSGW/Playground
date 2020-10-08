@@ -5,8 +5,43 @@ RSpec.describe 'Users', type: :system do
     driven_by(:rack_test)
   end
 
-  describe "ユーザー新規作成" do
-    context "フォームへ入力値が有効な時" do
+  describe 'ユーザー一覧画面' do
+    context 'ユーザーが登録されている時' do
+      scenario 'ユーザー一覧画面が表示されること' do
+        user = User.create(username: 'test_name', password: 'password')
+        visit users_path
+        expect(page).to have_content('Users#index')
+        expect(page).to have_content(user.username)
+        expect(page).to have_content('見る')
+        expect(page).to have_content('編集')
+        expect(page).to have_content('削除')
+      end
+    end
+
+    context 'ユーザーが登録されていない時' do
+      scenario 'ユーザーは表示されないこと' do
+        visit users_path
+        expect(page).to have_content('Users#index')
+        expect(page).to_not have_content('見る')
+        expect(page).to_not have_content('編集')
+        expect(page).to_not have_content('削除')
+      end
+    end
+  end
+
+  describe 'ユーザー詳細画面' do
+    context 'ユーザーが登録されている時' do
+      scenario 'ユーザー一覧から詳細画面に遷移できること' do
+        user = User.create(username: 'test_user', password: 'password')
+        visit users_path
+        click_link '見る'
+        expect(page).to have_content('test_user')
+      end
+    end
+  end
+
+  describe 'ユーザー新規作成' do
+    context 'フォームへ入力値が有効な時' do
       scenario '新しいユーザーが作られること' do
         expect do
           visit new_user_path
