@@ -33,6 +33,8 @@ RSpec.describe 'Users', type: :system do
           fill_in 'Password', with: nil
           click_button 'Create User'
 
+          expect(page).to have_content "Username can't be blank"
+          expect(page).to have_content 'Username is too short (minimum is 6 characters)'
           expect(page).to have_content '登録できませんでした'
         end.to change(User, :count).by(0)
       end
@@ -67,15 +69,23 @@ RSpec.describe 'Users', type: :system do
         fill_in 'Password confirmation', with: nil
         click_button 'Update User'
 
+        expect(page).to have_content "Username can't be blank"
+        expect(page).to have_content 'Username is too short (minimum is 6 characters)'
         expect(page).to have_content '更新できませんでした'
       end
     end
   end
 
-  scenario 'destroy user' do
-    User.create(username: 'deleted_user', password: 'password')
-    visit users_path
-    click_link '削除'
-    expect(page).to_not have_content 'deleted_user'
+  describe 'ユーザーの削除' do
+    context 'ユーザーが存在する時' do
+      scenario 'ユーザーは削除されること' do
+        User.create(username: 'deleted_user', password: 'password')
+        User.create(username: 'survive_user', password: 'password')
+        visit users_path
+        click_link '削除', match: :first
+        expect(page).to_not have_content 'deleted_user'
+        expect(page).to have_content '削除しました'
+      end
+    end
   end
 end
