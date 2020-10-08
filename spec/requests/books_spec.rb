@@ -32,7 +32,7 @@ RSpec.describe 'Books', type: :request do
         expect do
           post books_path, params: { book: { title: nil, date_of_publication: '2020/10/6' } }
         end.to change(Book, :count).by(0)
-        expect(response).to have_http_status(204)
+        expect(response).to have_http_status(200)
       end
     end
   end
