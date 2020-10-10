@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   def palindrome
     strAry = name.split(//)
-    strAry.reverse!
-    strAry.join
+    strAry.reverse!.join
   end
 end
