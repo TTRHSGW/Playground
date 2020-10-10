@@ -20,7 +20,21 @@ class ProjectsController < ApplicationController
 
   def edit;end
 
-  def update;end
+  def update
+    if @project.update(project_params)
+      redirect_to @project
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @project.destroy
+      redirect_to projects_path
+    else
+      redirect_to projects_path
+    end
+  end
 
     private
 
@@ -29,7 +43,7 @@ class ProjectsController < ApplicationController
     end
 
     def set_project
-      @project = Project(params[:id])
+      @project = Project.find(params[:id])
     end
 
 end
