@@ -1,2 +1,26 @@
 <h1>Projects#index</h1>
 <p>Find me in app/views/projects/index.html.erb</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>作成日</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @projects %>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= project.date_of_created %></td>
+          <td><%= project.updated_at %></td>
+          <td><%= link_to '開く', project_path(project) %></td>
+          <td><%= link_to '編集', edit_project_path(project) %></td>
+          <td><%= link_to '削除', project_path(project), method: :delete %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -34,4 +34,18 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe 'date_of_createdメソッドテスト' do
+    it '作成日を%Y年%-m月%-d日フォーマットで返すこと' do
+      project = FactoryBot.create(:project)
+      expect(project.date_of_created).to eq Time.now.strftime('%Y年%-m月%-d日')
+    end
+  end
+
+  describe 'date_of_updatedメソッドテスト' do
+    it '更新日日を%Y年%-m月%-d日フォーマットで返すこと' do
+      project = FactoryBot.create(:project)
+      expect(project.date_of_updated).to eq Time.now.strftime('%Y年%-m月%-d日')
+    end
+  end
 end
