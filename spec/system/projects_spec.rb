@@ -49,4 +49,13 @@ RSpec.describe "Projects", type: :system do
     click_on '開く'
     expect(page).to have_content 'Index to Detail'
   end
+
+  scenario 'プロジェクト詳細画面に関連todo一覧が出ること' do
+    project = FactoryBot.create(:project)
+    todo1 = FactoryBot.create(:todo, content: '家賃を払う', project: project)
+    todo2 = FactoryBot.create(:todo, content: '映画を見る', project: project)
+    visit project_path(project)
+    expect(page).to have_content '家賃を払う'
+    expect(page).to have_content '映画を見る'
+  end
 end
