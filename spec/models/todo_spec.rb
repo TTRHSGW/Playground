@@ -17,5 +17,11 @@ RSpec.describe Todo, type: :model do
         expect(todo.errors[:content]).to include("can't be blank")
       end
     end
+
+    it '所属するProjectを参照できること' do
+      project = FactoryBot.create(:project)
+      todo = FactoryBot.create(:todo, project: project)
+      expect(todo.project).to eq project
+    end
   end
 end

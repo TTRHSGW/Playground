@@ -58,4 +58,13 @@ RSpec.describe "Projects", type: :system do
     expect(page).to have_content '家賃を払う'
     expect(page).to have_content '映画を見る'
   end
+
+  scenario 'プロジェクト詳細画面でtodoの追加が出来ること' do
+    project = FactoryBot.create(:project, title: 'Add Todo Project')
+    visit project_path(project)
+    fill_in 'Content', with: 'テストを書く'
+    click_button 'Create Todo'
+    expect(page).to have_content 'テストを書く'
+    expect(page).to have_content 'Add Todo Project'
+  end
 end
