@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   validates :title, presence: true, length: { minimum: 6 }, uniqueness: true
+  has_many :todos
 
   def date_of_created
     self.created_at.strftime('%Y年%-m月%-d日')
