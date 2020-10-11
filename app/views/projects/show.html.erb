@@ -4,9 +4,11 @@
 <h2><%= @project.title %></h2>
 
 <% if @project.todos.any? %>
-  <% @project.todos.each do |todo| %>
-    <div><%= todo.content %></div>
-  <% end %>
+  <ul>
+    <% @project.todos.each do |todo| %>
+      <li><%= todo.content %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= form_with model: @todo, local: true do |f| %>
