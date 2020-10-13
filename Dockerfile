@@ -1,8 +1,25 @@
-FROM ruby:2.5.3
-RUN apt-get update -qq && apt-get install -y build-essential nodejs libpq-dev
-RUN mkdir /myapp
+FROM ruby:2.6.5-alpine
+RUN apk add --update --no-cache \
+    build-base \
+    gmp-dev \
+    libxslt-dev \
+    libxml2-dev \
+    mariadb-dev \
+    tzdata \
+    yarn \
+    imagemagick6-dev \
+    bash
+
 WORKDIR /myapp
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
+ENV TZ=Asia/Tokyo
+
+COPY Gemfile .
+COPY Gemfile.lock .
+
+COPY package.json .
+COPY yarn.lock .
+
 RUN bundle install
-ADD . /myapp
+RUN yarn install --check-files
+
+COPY . /myapp
