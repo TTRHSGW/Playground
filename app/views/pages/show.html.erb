@@ -5,9 +5,11 @@
 <p>ユーザー用ページです。</p>
 
 <% if current_user.tweets.any? %>
-  <% current_user.tweets.each do |tweet| %>
-    <%= tweet.content %>
-  <% end %>
+  <ul>
+    <% current_user.tweets.each do |tweet| %>
+      <li><%= tweet.content %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= form_with model: @tweet, local:true do |f| %>

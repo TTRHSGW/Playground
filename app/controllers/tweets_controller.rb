@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.save
-    redirect_to @tweet.user
+    redirect_to '/pages/show'
   end
 
     private
