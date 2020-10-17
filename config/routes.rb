@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/following'
+  get 'users/followers'
   devise_for :users
   root 'pages#index'
   get 'pages/show'

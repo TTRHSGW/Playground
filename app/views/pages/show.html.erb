@@ -4,6 +4,10 @@
 <h1>こんにちは、<%= current_user.username %>さん</h1>
 <p>ユーザー用ページです。</p>
 
+<%= current_user.following.count %>
+<%= current_user.followers.count %>
+
+
 <% if current_user.tweets.any? %>
   <ul>
     <% current_user.tweets.each do |tweet| %>
