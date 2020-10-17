@@ -6,5 +6,6 @@ class UsersController < ApplicationController
   end
 
   def followers
+    @followers = current_user.followers
   end
 end

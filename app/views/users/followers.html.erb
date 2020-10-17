@@ -1,2 +1,8 @@
 <h1>Users#followers</h1>
 <p>Find me in app/views/users/followers.html.erb</p>
+
+<% if @followers.any? %>
+  <% @followers.each do |follower| %>
+    <%= follower.username %>
+  <% end %>
+<% end %>
