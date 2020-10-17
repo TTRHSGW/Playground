@@ -4,8 +4,21 @@
 <h1>こんにちは、<%= current_user.username %>さん</h1>
 <p>ユーザー用ページです。</p>
 
-<%= link_to current_user.following.count, '/users/following' %>
-<%= link_to current_user.followers.count, '/users/followers' %>
+<div>
+  <a href="<%= '/users/following' %>">
+    <strong id='following' >
+      <%= current_user.following.count %>
+    </strong>
+    フォロー
+  </a>
+
+  <a href="<%= '/users/followers' %>">
+    <strong id='followers' >
+      <%= current_user.followers.count %>
+    </strong>
+    フォロワー
+  </a>
+</div>
 
 
 <% if current_user.tweets.any? %>
