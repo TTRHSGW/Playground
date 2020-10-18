@@ -5,14 +5,14 @@
 <p>ユーザー用ページです。</p>
 
 <div>
-  <a href="<%= '/users/following' %>">
+  <a href="<%= '/following' %>">
     <strong id='following' >
       <%= current_user.following.count %>
     </strong>
     フォロー
   </a>
 
-  <a href="<%= '/users/followers' %>">
+  <a href="<%= '/followers' %>">
     <strong id='followers' >
       <%= current_user.followers.count %>
     </strong>

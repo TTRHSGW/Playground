@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/following'
-  get 'users/followers'
-  devise_for :users
   root 'pages#index'
+  devise_for :users
+  resources :users, only: %i[show]
+  get '/following' => 'users#following'
+  get '/followers' => 'users#followers'
   get 'pages/show'
   resources :tweets
   resources :relationships, only: %i[create destroy]

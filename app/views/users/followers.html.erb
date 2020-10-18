@@ -3,6 +3,6 @@
 
 <% if @followers.any? %>
   <% @followers.each do |follower| %>
-    <%= follower.username %>
+    <%= link_to follower.username, user_path(follower) %>
   <% end %>
 <% end %>
