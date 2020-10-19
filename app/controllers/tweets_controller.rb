@@ -8,6 +8,16 @@ class TweetsController < ApplicationController
     redirect_to '/pages/show'
   end
 
+  def destroy
+    tweet = Tweet.find(params[:id])
+    if current_user == tweet.user
+      tweet.destroy
+      redirect_to '/pages/show'
+    else
+      redirect_to '/pages/show'
+    end
+  end
+
     private
 
     def tweet_params

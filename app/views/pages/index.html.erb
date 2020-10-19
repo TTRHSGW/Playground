@@ -1,10 +1,12 @@
-<h1>🐱ねこまるランドへようこそ🐱</h1>
+<h1>フィード</h1>
 
 <% if @feeds %>
   <ul>
     <% @feeds.each do |feed| %>
-      <li><%= feed.content %><%= feed.created_at %></li>
+      <li><%= feed.content %><%= feed.created_at %><%= feed.user.username %></li>
 
     <% end %>
   </ul>
 <% end %>
+
+<%= link_to 'ユーザー一覧', users_path %>

@@ -1,8 +1,4 @@
-<h1>Pages#show</h1>
-<p>Find me in app/views/pages/show.html.erb</p>
-
 <h1>こんにちは、<%= current_user.username %>さん</h1>
-<p>ユーザー用ページです。</p>
 
 <div>
   <a href="<%= '/following' %>">
@@ -24,7 +20,7 @@
 <% if current_user.tweets.any? %>
   <ul>
     <% current_user.tweets.each do |tweet| %>
-      <li><%= tweet.content %></li>
+      <li><%= tweet.content %>  <%= link_to '削除', tweet_path(tweet), method: :delete %></li>
     <% end %>
   </ul>
 <% end %>
@@ -37,3 +33,4 @@
 <% end %>
 
 <%= link_to 'トップページ', root_path %>
+<%= link_to 'ユーザー一覧', users_path %>
