@@ -5,6 +5,7 @@ RUN apk add --update --no-cache \
   libxslt-dev \
   libxml2-dev \
   postgresql-client \
+  postgresql-dev \
   tzdata \
   yarn \
   bash

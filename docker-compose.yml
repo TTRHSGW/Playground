@@ -15,6 +15,6 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/myapp/var/lib/postgresql/data
+      - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: 'password'
