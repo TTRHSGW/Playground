@@ -1,2 +1,12 @@
 <h1>Pages#mypage</h1>
 <p>Find me in app/views/pages/mypage.html.erb</p>
+
+<a href=<%= following_user_path(current_user) %>>
+<%= current_user.following.count %>
+following
+</a>
+
+<a href=<%= followers_user_path(current_user) %>>
+<%= current_user.followers.count %>
+followers
+</a>

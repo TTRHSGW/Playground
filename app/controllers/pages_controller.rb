@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   end
 
   def mypage
+    @tweet = Tweet.new
   end
 end

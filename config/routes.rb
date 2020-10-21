@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: %i[show index]
+  resources :users, only: %i[show index] do
+    member do
+      get :following, :followers
+    end
+  end
   resources :tweets, only: %i[create destroy]
   root 'pages#home'
   get 'pages/mypage'

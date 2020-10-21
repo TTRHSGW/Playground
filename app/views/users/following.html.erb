@@ -1,0 +1,8 @@
+
+<% if current_user.following.any? %>
+  <ul>
+    <% current_user.following.each do |followed| %>
+      <li><%= link_to followed.email, user_path(followed) %></li>
+    <% end %>
+  </ul>
+<% end %>
