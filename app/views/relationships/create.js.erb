@@ -1,1 +1,8 @@
 document.getElementById('follow_form').innerHTML = ("<%= j(render 'users/unfollow')%>")
+
+function showClock() {
+  var time_ms = new Date().getTime();
+  document.getElementById('display_time').innerHTML = time_ms;
+}
+
+setInterval('showClock()',1000)
