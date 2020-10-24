@@ -21,4 +21,8 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  def feed
+    Tweet.where('user_id IN (?) OR user_id = ?', following_ids, id)
+  end
+
 end

@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <div id="display_time"></div>
+    <script>
+    function showClock() {
+    var date = new Date();
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    document.getElementById('display_time').textContent
+      = "現在の時刻は" + hour + " 時 " + min + " 分 " + sec + " 秒 ";
+    }
+
+    setInterval('showClock()', 1000)
+    </script>
+
     <% unless user_signed_in? %>
     <%= link_to '新規登録', new_user_registration_path %>
     <%= link_to 'ログイン', new_user_session_path %>
