@@ -13,7 +13,7 @@
   <% if current_user.feed.any? %>
     <ul>
       <%  current_user.feed.each do |feed| %>
-        <li><%= feed.content %></li>
+        <li><div><%= feed.content %></div><div><%= feed.user.email %></div></li>
       <% end %>
     </ul>
   <% end %>
