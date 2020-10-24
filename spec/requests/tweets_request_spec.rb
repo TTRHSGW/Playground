@@ -7,7 +7,7 @@ RSpec.describe "Tweets", type: :request do
     let(:user2){FactoryBot.create(:user)}
     it 'Tweetが登録されること' do
       expect {
-      post tweets_path, params: { tweets: { content: 'First Tweet', user_id: user1.id } }
+      post tweets_path, params: { tweet: { content: 'First Tweet', user_id: user1.id } }
       }.to change(Tweet, :count).by(1)
     end
   end

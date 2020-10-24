@@ -3,3 +3,17 @@
 
 
 
+<%= form_with model: current_user.tweets.build do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit %>
+<% end %>
+
+
+<% if current_user.feed.any? %>
+  <ul>
+    <%  current_user.feed.each do |feed| %>
+      <li><%= feed.content %></li>
+    <% end %>
+  </ul>
+<% end %>
