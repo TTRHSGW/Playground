@@ -8,12 +8,16 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit %>
   <% end %>
-
-
-  <% if current_user.feed.any? %>
+    <% if current_user.feed.any? %>
     <ul>
-      <%  current_user.feed.each do |feed| %>
-        <li><div><%= feed.content %></div><div><%= feed.user.email %></div></li>
+      <%  current_user.feed.each do |tweet| %>
+        <li>
+          <div><%= tweet.content %></div>
+          <div><%= tweet.user.email %></div>
+          <div id="like-<%= tweet.id %>">
+          <%= render 'tweets/like', tweet: tweet %>
+          </div>
+        </li>
       <% end %>
     </ul>
   <% end %>
