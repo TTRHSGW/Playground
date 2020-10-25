@@ -44,4 +44,18 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe 'include_like remove_like test' do
+    let(:user){ FactoryBot.create(:user) }
+    let(:tweet){ FactoryBot.create(:tweet) }
+    it 'like、unlikeができること' do
+      expect(user.liking?(tweet)).to eq false
+      user.include_like(tweet)
+      expect(user.liking?(tweet)).to eq true
+      expect(tweet.likers.include?(user)).to eq true
+      user.remove_like(tweet)
+      expect(user.liking?(tweet)).to eq false
+    end
+  end
+
 end

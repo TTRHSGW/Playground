@@ -8,7 +8,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :tweets
-  has_many :like
+  has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :tweet
+
 
   def following?(other_user)
     following.include?(other_user)
@@ -20,6 +22,18 @@ class User < ApplicationRecord
 
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def liking?(tweet)
+    like_tweets.include?(tweet)
+  end
+
+  def include_like(tweet)
+    like_tweets << tweet
+  end
+
+  def remove_like(tweet)
+    likes.find_by(tweet_id: tweet.id).destroy
   end
 
   def feed

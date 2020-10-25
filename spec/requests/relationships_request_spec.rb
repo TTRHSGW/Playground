@@ -9,7 +9,7 @@ RSpec.describe "Relationships", type: :request do
         sign_in user1
         expect {
           post relationships_path, params: { followed_id: user2.id }, xhr: true
-        }.to change(Relationship, :count).by(1)
+        }.to change(user1.following, :count).by(1)
       end
     end
     context 'フォロー解除した時' do
@@ -21,7 +21,7 @@ RSpec.describe "Relationships", type: :request do
         sign_in user1
         expect {
           delete relationship_path(relationship), xhr: true
-        }.to change(Relationship, :count).by(-1)
+        }.to change(user1.following, :count).by(-1)
       end
     end
   end
