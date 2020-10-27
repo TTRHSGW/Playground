@@ -1,8 +1,13 @@
 <% if @users.any? %>
   <ul>
     <% @users.each do |user| %>
-      <div id="follow-<%= user.id %>">
       <li><%= link_to user.email, user_path(user) %></li>
+      <div id="follow-<%= user.id %>">
+        <% if current_user.following?(user) %>
+          <%= render 'users/unfollow', user: user %>
+        <% else %>
+          <%= render 'users/follow', user: user %>
+        <% end %>
       </div>
     <% end %>
   </ul>
