@@ -1,1 +1,1 @@
-document.getElementById('follow_form').innerHTML = ("<%= j(render 'users/unfollow')%>")
+document.getElementById('follow-<%= @user.id %>').innerHTML = ("<%= j(render 'users/unfollow', user: @user)%>")
