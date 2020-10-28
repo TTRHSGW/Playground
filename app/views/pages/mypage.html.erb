@@ -13,3 +13,25 @@
   followers
   </a>
 </div>
+
+<% if current_user %>
+  <%= form_with model: current_user.tweets.build do |f| %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit %>
+  <% end %>
+    <% if current_user.feed.any? %>
+    <ul>
+      <div id='append_tweet'></div>
+      <%  current_user.feed.each do |tweet| %>
+        <li>
+          <div><%= tweet.content %></div>
+          <div><%= tweet.user.email %></div>
+          <div id="like-<%= tweet.id %>">
+          <%= render 'tweets/like', tweet: tweet %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

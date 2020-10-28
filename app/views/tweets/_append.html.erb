@@ -1,0 +1,7 @@
+<li>
+  <div><%= tweet.content %></div>
+  <div><%= tweet.user.email %></div>
+  <div id="like-<%= tweet.id %>">
+  <%= render 'tweets/like', tweet: tweet %>
+  </div>
+</li>
