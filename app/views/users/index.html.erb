@@ -5,9 +5,9 @@
     <% @users.each do |user| %>
       <li><%= link_to user.email, user_path(user) %></li>
       <div id="follow-<%= user.id %>">
-        <% if current_user.following?(user) %>
+        <% if current_user.following?(user) && user != current_user %>
           <%= render 'users/unfollow', user: user %>
-        <% else %>
+        <% elsif user != current_user %>
           <%= render 'users/follow', user: user %>
         <% end %>
       </div>
