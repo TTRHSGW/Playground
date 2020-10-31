@@ -1,25 +1,27 @@
-<div class="mx-auto" style="width: 800px;">
+<div class="mx-auto" style="width: 600px;">
 <h1>MyPage</h1>
 
 <div>
   <a href=<%= following_user_path(current_user) %>>
   <%= current_user.following.count %>
-  following
+  フォロー中
   </a>
 </div>
 
 <div>
   <a href=<%= followers_user_path(current_user) %>>
   <%= current_user.followers.count %>
-  followers
+  フォロワー
   </a>
 </div>
 
 <% if current_user %>
   <%= form_with model: current_user.tweets.build do |f| %>
-    <%= f.text_area :content, class: 'form-control' %>
+    <%= f.text_area :content, class: 'tweet_text_area' %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit('投稿', class: 'btn btn-raised btn-primary') %>
+    <div>
+      <%= f.submit('投稿', class: 'btn btn-raised btn-primary tweet_submit') %>
+    </div>
   <% end %>
     <% if current_user.feed.any? %>
       <div id='append_tweet'></div>
