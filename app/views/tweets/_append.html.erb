@@ -1,7 +1,7 @@
-<li>
-  <div><%= tweet.content %></div>
+<div class="card" >
   <div><%= tweet.user.email %></div>
+  <p class="card-text"><%= tweet.content %></p>
   <div id="like-<%= tweet.id %>">
   <%= render 'tweets/like', tweet: tweet %>
   </div>
-</li>
+</div>

@@ -1,3 +1,4 @@
+<div class="mx-auto" style="width: 800px;">
 <h1>MyPage</h1>
 
 <div>
@@ -16,22 +17,21 @@
 
 <% if current_user %>
   <%= form_with model: current_user.tweets.build do |f| %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: 'form-control' %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit %>
+    <%= f.submit('投稿', class: 'btn btn-raised btn-primary') %>
   <% end %>
     <% if current_user.feed.any? %>
-    <ul>
       <div id='append_tweet'></div>
       <%  current_user.feed.each do |tweet| %>
-        <li>
-          <div><%= tweet.content %></div>
+        <div class="card" >
           <div><%= tweet.user.email %></div>
+          <p class="card-text"><%= tweet.content %></p>
           <div id="like-<%= tweet.id %>">
           <%= render 'tweets/like', tweet: tweet %>
           </div>
-        </li>
+        </div>
       <% end %>
-    </ul>
   <% end %>
 <% end %>
+</div>
