@@ -24,42 +24,45 @@
     </script>
 
     <div class='app'>
-    <header class='menu'>
-    <% unless user_signed_in? %>
-      <%= link_to '新規登録', new_user_registration_path %>
-      <%= link_to 'ログイン', new_user_session_path %>
-    <% else %>
-      <div class='menu-icon'>
-        <%= link_to root_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
-          <i class="fas fa-home"></i>
-        <% end %>
+      <header class='menu'>
+      <% unless user_signed_in? %>
+        <%= link_to '新規登録', new_user_registration_path %>
+        <%= link_to 'ログイン', new_user_session_path %>
+      <% else %>
+        <div class='menu-icon'>
+          <%= link_to root_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+        </div>
+
+        <div class='menu-icon'>
+          <%= link_to pages_mypage_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+            <i class="fas fa-user-circle"></i>
+          <% end %>
+        </div>
+
+        <div class='menu-icon'>
+          <%= link_to users_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+            <i class="fas fa-users"></i>
+          <% end %>
+        </div>
+
+        <div class='menu-icon'>
+          <%= link_to(destroy_user_session_path, method: :delete, class: 'btn btn-primary bmd-btn-icon' ) do %>
+            <i class="fas fa-sign-out-alt"></i>
+          <% end %>
+        </div>
+      <% end %>
+      </header>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <div class="display_time_section">
+        <div id="display_time"></div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
       </div>
 
-      <div class='menu-icon'>
-        <%= link_to pages_mypage_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
-          <i class="fas fa-user-circle"></i>
-        <% end %>
-      </div>
-
-      <div class='menu-icon'>
-        <%= link_to users_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
-          <i class="fas fa-users"></i>
-        <% end %>
-      </div>
-
-      <div class='menu-icon'>
-        <%= link_to(destroy_user_session_path, method: :delete, class: 'btn btn-primary bmd-btn-icon' ) do %>
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-      </div>
-    <% end %>
-    </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="container">
-      <%= yield %>
-    </div>
-    <div id="display_time", class="display_time"></div>
     </div>
   </body>
 </html>
