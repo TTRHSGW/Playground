@@ -1,1 +1,2 @@
-document.getElementById("append_tweet").insertAdjacentHTML('afterbegin',　"<%= j(render 'tweets/append', tweet: @tweet )%>")
+document.getElementById("append_tweet").insertAdjacentHTML('afterbegin',　"<%= j(render 'tweets/append', tweet: @tweet )%>");
+document.getElementById("tweet_text_area").value = '';

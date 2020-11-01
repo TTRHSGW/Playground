@@ -10,7 +10,6 @@
   </head>
 
   <body>
-    <div id="display_time"></div>
     <script>
     function showClock() {
     var date = new Date();
@@ -28,17 +27,22 @@
     <%= link_to '新規登録', new_user_registration_path %>
     <%= link_to 'ログイン', new_user_session_path %>
     <% else %>
-    <%= current_user.email %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <%= link_to root_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+      <%= link_to pages_mypage_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+        <i class="fas fa-user-circle"></i>
+      <% end %>
+      <%= link_to users_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+        <i class="fas fa-users"></i>
+      <% end %>
+      <%= link_to destroy_user_session_path, {class: 'btn btn-primary bmd-btn-icon'}, method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= link_to 'トップ', root_path %>
-    <% if user_signed_in? %>
-    <%= link_to 'MyPage', pages_mypage_path %>
-    <%= link_to 'ユーザー一覧', users_path %>
-    <% end %>
-
+    <div id="display_time"></div>
   </body>
 </html>

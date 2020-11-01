@@ -1,5 +1,5 @@
 <div class="mx-auto" style="width: 600px;">
-<h1>MyPage</h1>
+<h3><%= current_user.email %></h3>
 
 <div>
   <a href=<%= following_user_path(current_user) %>>
@@ -16,16 +16,9 @@
 </div>
 
 <% if current_user %>
-  <%= form_with model: current_user.tweets.build do |f| %>
-    <%= f.text_area :content, class: 'tweet_text_area' %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <div>
-      <%= f.submit('投稿', class: 'btn btn-raised btn-primary tweet_submit') %>
-    </div>
-  <% end %>
-    <% if current_user.feed.any? %>
+    <% if current_user.my_tweets.any? %>
       <div id='append_tweet'></div>
-      <%  current_user.feed.each do |tweet| %>
+      <%  current_user.my_tweets.each do |tweet| %>
         <div class="card" >
           <div><%= tweet.user.email %></div>
           <p class="card-text"><%= tweet.content %></p>
