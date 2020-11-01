@@ -1,18 +1,20 @@
 <div class="mx-auto" style="width: 600px;">
-<h1>ユーザー一覧</h1>
+<h3>ユーザー一覧</h3>
 
 <% if @users.any? %>
   <% @users.each do |user| %>
-    <div class="card" >
-    <%= link_to user.email, user_path(user) %>
-    <div id="follow-<%= user.id %>">
-      <% if current_user.following?(user) && user != current_user %>
-        <%= render 'users/unfollow', user: user %>
-      <% elsif user != current_user %>
-        <%= render 'users/follow', user: user %>
-      <% end %>
-    </div>
-    </div>
+    <% if user != current_user %>
+      <div class="card" >
+        <%= link_to user.email, user_path(user) %>
+        <div id="follow-<%= user.id %>">
+          <% if current_user.following?(user) %>
+            <%= render 'users/unfollow', user: user %>
+          <% else %>
+            <%= render 'users/follow', user: user %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 </div>

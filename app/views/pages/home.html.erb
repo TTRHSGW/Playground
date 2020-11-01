@@ -1,5 +1,7 @@
 <div class="mx-auto" style="width: 600px;">
-<h3>ホーム</h3>
+<% if current_user %>
+  <h3>ホーム</h3>
+<% end %>
 
 <% if current_user %>
   <%= form_with model: current_user.tweets.build do |f| %>
