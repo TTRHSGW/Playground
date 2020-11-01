@@ -26,8 +26,16 @@
     <div class='app'>
       <header class='menu'>
       <% unless user_signed_in? %>
-        <%= link_to '新規登録', new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path %>
+        <div class='menu-icon'>
+          <%= link_to new_user_registration_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+            <i class="fas fa-user-plus"></i>
+          <% end %>
+        </div>
+        <div class='menu-icon'>
+          <%= link_to new_user_session_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
+            <i class="fas fa-sign-in-alt"></i>
+          <% end %>
+        </div>
       <% else %>
         <div class='menu-icon'>
           <%= link_to root_path, {class: 'btn btn-primary bmd-btn-icon'} do %>
