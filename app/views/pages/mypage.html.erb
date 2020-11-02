@@ -22,7 +22,7 @@
         <div><%= tweet.user.email %></div>
         <div class="card-text"><%= tweet.content %></div>
         <div id="like-<%= tweet.id %>">
-        <%= render 'tweets/like', tweet: tweet %>
+          <%= render 'tweets/like', tweet: tweet %>
         </div>
       </div>
     <% end %>

@@ -1,13 +1,13 @@
 <% if current_user.liking?(tweet) %>
-  <%= form_with model: tweet.likes.find_by(user_id: current_user.id), method: :delete do |f| %>
-    <%= button_tag(class: "btn btn-danger") do %>
+  <%= form_with model: tweet.likes.find_by(user_id: current_user.id), method: :delete, class: "like_form_class" do |f| %>
+    <%= button_tag(class: "btn btn-danger like_button") do %>
       <%= content_tag :span, "#{tweet.likes.count}", class: "fas fa-heart" %>
     <% end %>
   <% end %>
 <% else %>
-  <%= form_with model: tweet.likes.build do |f| %>
+  <%= form_with model: tweet.likes.build, class: "like_form_class" do |f| %>
     <%= hidden_field_tag :tweet_id, tweet.id %>
-    <%= button_tag(class: "btn btn-secondary") do %>
+    <%= button_tag(class: "btn btn-secondary like_button") do %>
       <%= content_tag :span, "#{tweet.likes.count}", class: "far fa-heart" %>
     <% end %>
   <% end %>

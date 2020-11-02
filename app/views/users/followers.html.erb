@@ -1,9 +1,18 @@
-
+<div class="mx-auto" style="width: 600px;">
+<h3>フォロワー一覧</h3>
 
 <% if current_user.followers.any? %>
-  <ul>
-    <% current_user.followers.each do |follower| %>
-      <li><%= link_to follower.email, user_path(follower) %></li>
-    <% end %>
-  </ul>
+  <% current_user.followers.each do |follower| %>
+    <div class="card" >
+      <%= link_to follower.email, user_path(follower) %>
+      <div id="follow-<%= follower.id %>">
+        <% if current_user.following?(follower) %>
+          <%= render 'users/unfollow', user: follower %>
+        <% else %>
+          <%= render 'users/follow', user: follower %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+</div>
