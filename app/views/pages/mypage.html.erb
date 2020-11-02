@@ -1,32 +1,31 @@
 <div class="mx-auto" style="width: 600px;">
 <h3><%= current_user.email %></h3>
 
-<div>
+<span class="following_count">
   <a href=<%= following_user_path(current_user) %>>
   <%= current_user.following.count %>
   フォロー中
   </a>
-</div>
+</span>
 
-<div>
+<span class="follower_count">
   <a href=<%= followers_user_path(current_user) %>>
   <%= current_user.followers.count %>
   フォロワー
   </a>
-</div>
+</span>
 
 <% if current_user %>
-    <% if current_user.my_tweets.any? %>
-      <div id='append_tweet'></div>
-      <%  current_user.my_tweets.each do |tweet| %>
-        <div class="card" >
-          <div><%= tweet.user.email %></div>
-          <p class="card-text"><%= tweet.content %></p>
-          <div id="like-<%= tweet.id %>">
-          <%= render 'tweets/like', tweet: tweet %>
-          </div>
+  <% if current_user.my_tweets.any? %>
+    <%  current_user.my_tweets.each do |tweet| %>
+      <div class="card" >
+        <div><%= tweet.user.email %></div>
+        <div class="card-text"><%= tweet.content %></div>
+        <div id="like-<%= tweet.id %>">
+        <%= render 'tweets/like', tweet: tweet %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 </div>

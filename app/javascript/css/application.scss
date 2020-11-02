@@ -2,19 +2,23 @@
 
 .card{
   padding: 10px;
-  margin: 10px;
-  border-radius: 0.5rem;
 }
 
 .tweet_text_area{
   padding: 10px;
-  margin: 10px;
-  width: 500px;
-  border-radius: 0.5rem;
+  margin-bottom: 10px;
 }
 
 .tweet_submit{
-  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.like_form_class{
+  margin: 0px;
+}
+
+.like_button{
+  margin: 0px;
 }
 
 .app{
@@ -51,4 +55,12 @@ display_time{
 .unfollow_button{
   margin-top: 5px;
   width: 120px;
+}
+
+.following_count{
+  margin: 10px;
+}
+
+.follower_count{
+  margin: 10px;
 }

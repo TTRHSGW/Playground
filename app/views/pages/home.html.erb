@@ -5,7 +5,7 @@
 
 <% if current_user %>
   <%= form_with model: current_user.tweets.build do |f| %>
-    <%= f.text_area :content, class: 'tweet_text_area', id: 'tweet_text_area' %>
+    <%= f.text_area :content, class: 'form-control tweet_text_area', id: 'tweet_text_area' %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div>
       <%= f.submit('投稿', class: 'btn btn-raised btn-primary tweet_submit') %>
