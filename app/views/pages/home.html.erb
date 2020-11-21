@@ -1,6 +1,7 @@
 <div class="mx-auto" style="width: 600px;">
 <% if current_user %>
   <h3>ホーム</h3>
+  <%= audio_tag 'hakucyou.mp3', autoplay: false, controls: true %>
 <% end %>
 
 <% if current_user %>
