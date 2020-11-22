@@ -3,14 +3,14 @@
 
 <span class="following_count">
   <a href=<%= following_user_path(current_user) %>>
-  <%= current_user.following.count %>
+  <%= current_user.following.size %>
   フォロー中
   </a>
 </span>
 
 <span class="follower_count">
   <a href=<%= followers_user_path(current_user) %>>
-  <%= current_user.followers.count %>
+  <%= current_user.followers.size %>
   フォロワー
   </a>
 </span>
