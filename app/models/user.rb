@@ -38,11 +38,11 @@ class User < ApplicationRecord
 
   def feed
     following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    Tweet.includes(:user, :likes).where("user_id IN (#{following_ids}) OR user_id = :user_id ", user_id: id).order("created_at DESC")
+    Tweet.includes(:user).where("user_id IN (#{following_ids}) OR user_id = :user_id ", user_id: id).order("created_at DESC")
   end
 
   def my_tweets
-    Tweet.includes(:user, :likes).where("user_id = :user_id ", user_id: id).order("created_at DESC")
+    Tweet.includes(:user).where("user_id = :user_id ", user_id: id).order("created_at DESC")
   end
 
 end
